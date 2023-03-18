@@ -2,5 +2,7 @@
 {
     public class CreateProductCommand
     {
+        public string Title { get; set; }
+
     }
 }
