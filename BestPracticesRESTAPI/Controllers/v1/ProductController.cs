@@ -15,7 +15,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
     public class ProductController : ControllerBase
     {
         /// <summary>
-        /// 
+        /// GetProductList
         /// </summary>
         /// <returns></returns>
         [HttpGet("/api/v1/products")]
@@ -27,7 +27,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         }
 
         /// <summary>
-        /// 
+        /// CreateProduct
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
@@ -40,7 +40,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         }
 
         /// <summary>
-        /// /
+        /// GetProduct
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
@@ -53,7 +53,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         }
 
         /// <summary>
-        /// 
+        /// Update Product
         /// </summary>
         /// <param name="productId"></param>
         /// <param name="command"></param>
@@ -68,7 +68,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         }
 
         /// <summary>
-        /// 
+        /// Delete Product
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
@@ -79,7 +79,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         }
 
         /// <summary>
-        /// 
+        /// Upsert Product Picture
         /// </summary>
         /// <param name="productId"></param>
         /// <param name="command"></param>
@@ -94,7 +94,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         }
 
         /// <summary>
-        /// 
+        /// Get Product Picture
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
@@ -107,7 +107,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         }
 
         /// <summary>
-        /// 
+        /// Create Product Price
         /// </summary>
         /// <param name="productId"></param>
         /// <param name="command"></param>
@@ -122,7 +122,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         }
 
         /// <summary>
-        /// 
+        /// Get Product Price
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
@@ -135,7 +135,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         }
 
         /// <summary>
-        /// 
+        /// Update Product Price
         /// </summary>
         /// <param name="productId"></param>
         /// <param name="command"></param>
@@ -150,7 +150,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         }
 
         /// <summary>
-        /// 
+        /// Delete Product Price
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
@@ -161,7 +161,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         }
 
         /// <summary>
-        /// 
+        /// Create Product Category
         /// </summary>
         /// <param name="productId"></param>
         /// <param name="command"></param>
@@ -176,7 +176,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         }
 
         /// <summary>
-        /// 
+        /// Get Product Category
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
@@ -189,7 +189,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         }
 
         /// <summary>
-        /// 
+        /// Update Product Category
         /// </summary>
         /// <param name="productId"></param>
         /// <param name="command"></param>
@@ -204,7 +204,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         }
 
         /// <summary>
-        /// 
+        /// Delete Product Category
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
@@ -215,7 +215,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         }
 
         /// <summary>
-        /// 
+        /// Create Product Sub Category
         /// </summary>
         /// <param name="productId"></param>
         /// <param name="categoryId"></param>
@@ -237,7 +237,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         }
 
         /// <summary>
-        /// 
+        /// Get Product Sub Category
         /// </summary>
         /// <param name="productId"></param>
         /// <param name="categoryId"></param>
@@ -252,7 +252,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         }
 
         /// <summary>
-        /// 
+        /// Update Product Sub Category
         /// </summary>
         /// <param name="productId"></param>
         /// <param name="categoryId"></param>
@@ -271,7 +271,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         }
 
         /// <summary>
-        /// 
+        /// Delete Product Sub Category
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
