@@ -5,4 +5,5 @@
 
 ## Integration Tests
 
-https://github.com/nosratifarhad/Best_Practices_REST_API/blob/main/files/Annotation%202023-03-18%20190805.png
+
+![My Image]([my-image.jpg](https://github.com/nosratifarhad/Best_Practices_REST_API/blob/main/files/Annotation%202023-03-18%20190805.png))
