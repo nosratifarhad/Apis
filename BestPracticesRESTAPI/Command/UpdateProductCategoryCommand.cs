@@ -1,6 +1,6 @@
 ﻿namespace BestPracticesRESTAPI.Command
 {
-    public class ProductCategoryCommand
+    public class UpdateProductCategoryCommand
     {
     }
 }
