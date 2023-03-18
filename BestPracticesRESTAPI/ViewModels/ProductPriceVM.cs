@@ -1,6 +1,6 @@
-﻿namespace BestPracticesRESTAPI.Command
+﻿namespace BestPracticesRESTAPI.ViewModels
 {
-    public class CreateProductPriceCommand
+    public class ProductPriceVM
     {
         public int ProductId { get; set; }
 
