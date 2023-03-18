@@ -3,6 +3,7 @@ using BestPracticesRESTAPI.MockDates.ProductCategoryMockDatas;
 using BestPracticesRESTAPI.MockDates.ProductMockDates;
 using BestPracticesRESTAPI.MockDates.ProductPictureMockDatas;
 using BestPracticesRESTAPI.MockDates.ProductPriceMockDatas;
+using BestPracticesRESTAPI.MockDates.ProductPriceOffMockDatas;
 using BestPracticesRESTAPI.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -164,6 +165,11 @@ namespace BestPracticesRESTAPI.Controllers.v1
             return CreatedAtRoute(nameof(GetProductPrice), new { productId = productId }, new { ProductId = productId });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
         [HttpGet("/api/v1/product/{productId:int}/price", Name = nameof(GetProductPrice))]
         public async Task<IActionResult> GetProductPrice(int productId)
         {
@@ -172,6 +178,12 @@ namespace BestPracticesRESTAPI.Controllers.v1
             return Ok(productPriceVM);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="command"></param>
+        /// <returns></returns>
         [HttpPut("/api/v1/product/{productId:int}/price")]
         public async Task<IActionResult> UpdateProductPrice(int productId, UpdateProductPriceCommand command)
         {
@@ -181,6 +193,66 @@ namespace BestPracticesRESTAPI.Controllers.v1
             return NoContent();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="priceId"></param>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        [HttpPost("/api/v1/product/{productId:int}/price/{priceId:int}/off")]
+        public async Task<IActionResult> CreateProductOffPrice(int productId, int priceId, CreateProductPriceOffCommand command)
+        {
+            if (productId != command.ProductId ||
+                priceId != command.PriceId)
+                return BadRequest("Bad Request Message");
+
+            return CreatedAtRoute(nameof(GetProductOffPrice),
+                new { ProductId = productId, PriceId = priceId });
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="priceId"></param>
+        /// <returns></returns>
+        [HttpGet("/api/v1/product/{productId:int}/price/{priceId:int}/off", Name = nameof(GetProductOffPrice))]
+        public async Task<IActionResult> GetProductOffPrice(int productId, int priceId)
+        {
+            ProductPriceOffVM productPriceOffMockData = ProductPriceOffMockData.ProductPriceOffVM;
+
+            return Ok(productPriceOffMockData);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="priceId"></param>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        [HttpPut("/api/v1/product/{productId:int}/price/{priceId:int}/off")]
+        public async Task<IActionResult> UpdateProductOffPrice(int productId, int priceId, UpdateProductPriceOffCommand command)
+        {
+            if (productId != command.ProductId ||
+                priceId != command.PriceId)
+                return BadRequest("Bad Request Message");
+
+            return NoContent();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="priceId"></param>
+        /// <returns></returns>
+        [HttpDelete("/api/v1/product/{productId:int}/price/{priceId:int}/off")]
+        public async Task<IActionResult> DeleteProductOffPrice(int productId, int priceId)
+        {
+            return NoContent();
+        }
 
     }
 }
