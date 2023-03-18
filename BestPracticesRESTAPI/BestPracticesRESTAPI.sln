@@ -5,6 +5,10 @@ VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BestPracticesRESTAPI", "BestPracticesRESTAPI.csproj", "{7FF1D8AF-0FF6-46EA-BB72-D86CD7765249}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{601538E4-40F8-4A9E-9FD0-5E37497F9AAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Best_Practices_REST_API_IntegrationTest", "..\Best_Practices_REST_API_IntegrationTest\Best_Practices_REST_API_IntegrationTest.csproj", "{46865FB1-60E3-4337-86EE-73C8E6CDE5F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +19,16 @@ Global
 		{7FF1D8AF-0FF6-46EA-BB72-D86CD7765249}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FF1D8AF-0FF6-46EA-BB72-D86CD7765249}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FF1D8AF-0FF6-46EA-BB72-D86CD7765249}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46865FB1-60E3-4337-86EE-73C8E6CDE5F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46865FB1-60E3-4337-86EE-73C8E6CDE5F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46865FB1-60E3-4337-86EE-73C8E6CDE5F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46865FB1-60E3-4337-86EE-73C8E6CDE5F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{46865FB1-60E3-4337-86EE-73C8E6CDE5F4} = {601538E4-40F8-4A9E-9FD0-5E37497F9AAC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {039025A2-69C6-4FED-B176-E879B20FDCD7}
