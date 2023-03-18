@@ -1,6 +1,7 @@
 ﻿using BestPracticesRESTAPI.Command;
 using BestPracticesRESTAPI.MockDates.ProductCategoryMockDatas;
 using BestPracticesRESTAPI.MockDates.ProductMockDates;
+using BestPracticesRESTAPI.MockDates.ProductPictureMockDatas;
 using BestPracticesRESTAPI.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -122,7 +123,10 @@ namespace BestPracticesRESTAPI.Controllers.v1
         [HttpPut("/api/v1/product/{productId:int}/picture")]
         public async Task<IActionResult> UpsertProductPicture(int productId, ProductPictureCommand command)
         {
-            return NoContent();
+            if (productId != command.ProductId)
+                return BadRequest("Bad Request Message");
+
+            return CreatedAtRoute(nameof(GetProductPicture), new { productId = productId }, new { ProductId = productId });
         }
 
         /// <summary>
@@ -130,10 +134,12 @@ namespace BestPracticesRESTAPI.Controllers.v1
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
-        [HttpGet("/api/v1/product/{productId:int}/picture")]
+        [HttpGet("/api/v1/product/{productId:int}/picture", Name = nameof(GetProductPicture))]
         public async Task<IActionResult> GetProductPicture(int productId)
         {
-            return Ok();
+            List<ProductPictureVM> productPictureVMs = ProductPictureMockData.ProductPictureVMs;
+
+            return Ok(productPictureVMs);
         }
 
         /// <summary>
