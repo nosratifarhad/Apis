@@ -73,7 +73,6 @@ namespace Best_Practices_REST_API_IntegrationTest.Controllers
 
         #endregion [ CreateProduct ]
 
-
         #region [ GetProduct ]
 
         [Fact]
@@ -97,6 +96,27 @@ namespace Best_Practices_REST_API_IntegrationTest.Controllers
 
 
         #endregion [ GetProduct ]
+
+        #region [ UpdateProduct ]
+
+        [Fact]
+        public async Task When_ValidUpdateProductCommandInUpdateProduct_Then_ShouldBeUpdateItem()
+        {
+            int productId = 1;
+
+            var uri = $"/api/v1/product/{productId}";
+
+            var updateProductCommand = UpdateProductCommandMockData.ValidUpdateProductCommand;
+
+            var request = CreateRequest(updateProductCommand);
+
+            var response = await HttpClient.PutAsync(uri, request);
+
+            response.IsSuccessStatusCode.Should().BeTrue();
+            response.StatusCode.Should().Be(HttpStatusCode.NoContent);
+        }
+
+        #endregion [ UpdateProduct ]
 
 
         #region 
