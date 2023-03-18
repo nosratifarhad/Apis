@@ -1,4 +1,5 @@
 ﻿using BestPracticesRESTAPI.Command;
+using BestPracticesRESTAPI.MockDates.ProductCategoryMockDatas;
 using BestPracticesRESTAPI.MockDates.ProductMockDates;
 using BestPracticesRESTAPI.ViewModels;
 using Microsoft.AspNetCore.Http;
@@ -78,7 +79,23 @@ namespace BestPracticesRESTAPI.Controllers.v1
         [HttpPost("/api/v1/product/{productId:int}/category")]
         public async Task<IActionResult> CreateProductCategory(int productId, CreateProductCategoryCommand command)
         {
-            return NoContent();
+            if (productId != command.ProductId)
+                return BadRequest("Bad Request Message");
+
+            return CreatedAtRoute(nameof(GetProductCategory), new { productId = productId }, new { ProductId = productId });
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
+        [HttpGet("/api/v1/product/{productId:int}/category", Name = nameof(GetProductCategory))]
+        public async Task<IActionResult> GetProductCategory(int productId)
+        {
+            ProductCategoryVM productCategoryVM = ProductCategoryMockData.ProductCategoryVMMokcData;
+
+            return Ok(productCategoryVM);
         }
 
         /// <summary>
@@ -90,18 +107,10 @@ namespace BestPracticesRESTAPI.Controllers.v1
         [HttpPut("/api/v1/product/{productId:int}/category")]
         public async Task<IActionResult> UpdateProductCategory(int productId, UpdateProductCategoryCommand command)
         {
-            return NoContent();
-        }
+            if (productId != command.ProductId)
+                return BadRequest("Bad Request Message");
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="productId"></param>
-        /// <returns></returns>
-        [HttpGet("/api/v1/product/{productId:int}/category")]
-        public async Task<IActionResult> GetProductCategory(int productId)
-        {
-            return Ok();
+            return NoContent();
         }
 
         /// <summary>

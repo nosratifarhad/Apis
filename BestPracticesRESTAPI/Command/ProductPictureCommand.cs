@@ -2,6 +2,16 @@
 {
     public class ProductPictureCommand
     {
-        public List<string> patch { get; set; }
+        public int ProductId { get; set; }
+
+        public List<ProductPictureDetail> ProductPictureDetails { get; set; }
+    }
+
+    public class  ProductPictureDetail
+    {
+
+        public string Title { get; set; }
+
+        public string PicturePatch { get; set; }
     }
 }
