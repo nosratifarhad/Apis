@@ -14,6 +14,10 @@ namespace BestPracticesRESTAPI.Controllers.v1
     [ApiController]
     public class ProductController : ControllerBase
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("/api/v1/products")]
         public async Task<IActionResult> GetProductList()
         {
@@ -36,7 +40,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         }
 
         /// <summary>
-        /// 
+        /// /
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
@@ -52,6 +56,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         /// 
         /// </summary>
         /// <param name="productId"></param>
+        /// <param name="command"></param>
         /// <returns></returns>
         [HttpPut("/api/v1/product/{productId:int}")]
         public async Task<IActionResult> UpdateProduct(int productId, UpdateProductCommand command)
@@ -198,12 +203,24 @@ namespace BestPracticesRESTAPI.Controllers.v1
             return NoContent();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
         [HttpDelete("/api/v1/product/{productId:int}/category")]
         public async Task<IActionResult> DeleteProductCategory(int productId)
         {
             return NoContent();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="categoryId"></param>
+        /// <param name="command"></param>
+        /// <returns></returns>
         [HttpPost("/api/v1/product/{productId:int}/category/{categoryId:int}/subcategory")]
         public async Task<IActionResult> CreateProductSubCategory(int productId, int categoryId, CreateProductSubCategoryCommand command)
         {
@@ -219,6 +236,13 @@ namespace BestPracticesRESTAPI.Controllers.v1
                 });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="categoryId"></param>
+        /// <param name="subCategoryId"></param>
+        /// <returns></returns>
         [HttpGet("/api/v1/product/{productId:int}/category/{categoryId:int}/subcategory/{subCategoryId:int}", Name = nameof(GetProductSubCategory))]
         public async Task<IActionResult> GetProductSubCategory(int productId, int categoryId, int subCategoryId)
         {
@@ -227,6 +251,14 @@ namespace BestPracticesRESTAPI.Controllers.v1
             return Ok(productSubCategoryVM);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="categoryId"></param>
+        /// <param name="subCategoryId"></param>
+        /// <param name="command"></param>
+        /// <returns></returns>
         [HttpPut("/api/v1/product/{productId:int}/category/{categoryId:int}/subcategory/{subCategoryId:int}")]
         public async Task<IActionResult> UpdateProductSubCategory(int productId, int categoryId, int subCategoryId, UpdateProductSubCategoryCommand command)
         {
@@ -238,6 +270,11 @@ namespace BestPracticesRESTAPI.Controllers.v1
             return NoContent();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
         [HttpDelete("/api/v1/product/{productId:int}/category/{categoryId:int}/subcategory/{subCategoryId:int}")]
         public async Task<IActionResult> DeleteProductSubCategory(int productId)
         {
