@@ -64,7 +64,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost("/api/v1/product/{productId:int}/category")]
-        public async Task<IActionResult> CreateProductCategory(int productId, ProductCategoryCommand command)
+        public async Task<IActionResult> CreateProductCategory(int productId, CreateProductCategoryCommand command)
         {
             return NoContent();
         }
@@ -76,7 +76,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPut("/api/v1/product/{productId:int}/category")]
-        public async Task<IActionResult> UpdateProductCategory(int productId, ProductCategoryCommand command)
+        public async Task<IActionResult> UpdateProductCategory(int productId, UpdateProductCategoryCommand command)
         {
             return NoContent();
         }
@@ -122,7 +122,19 @@ namespace BestPracticesRESTAPI.Controllers.v1
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPut("/api/v1/product/{productId:int}/price")]
-        public async Task<IActionResult> UpsertProductPrice(int productId, ProductPriceCommand command)
+        public async Task<IActionResult> CreateProductPrice(int productId, CreateProductPriceCommand command)
+        {
+            return NoContent();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        [HttpPut("/api/v1/product/{productId:int}/price")]
+        public async Task<IActionResult> UpdateProductPrice(int productId, UpdateProductPriceCommand command)
         {
             return NoContent();
         }
@@ -137,8 +149,6 @@ namespace BestPracticesRESTAPI.Controllers.v1
         {
             return Ok();
         }
-
-
 
     }
 }
