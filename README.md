@@ -1,6 +1,6 @@
 # Best Practices for REST API Development
 
 
-## Api
+## Apis
 
 ## Integration Tests
