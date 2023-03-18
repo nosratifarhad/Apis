@@ -3,7 +3,7 @@ using BestPracticesRESTAPI.MockDates.ProductCategoryMockDatas;
 using BestPracticesRESTAPI.MockDates.ProductMockDates;
 using BestPracticesRESTAPI.MockDates.ProductPictureMockDatas;
 using BestPracticesRESTAPI.MockDates.ProductPriceMockDatas;
-using BestPracticesRESTAPI.MockDates.ProductPriceOffMockDatas;
+using BestPracticesRESTAPI.MockDates.ProductSubCategoryMockDatas;
 using BestPracticesRESTAPI.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -69,55 +69,6 @@ namespace BestPracticesRESTAPI.Controllers.v1
         /// <returns></returns>
         [HttpDelete("/api/v1/product/{productId:int}")]
         public async Task<IActionResult> DeleteProduct(int productId)
-        {
-            return NoContent();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="productId"></param>
-        /// <param name="command"></param>
-        /// <returns></returns>
-        [HttpPost("/api/v1/product/{productId:int}/category")]
-        public async Task<IActionResult> CreateProductCategory(int productId, CreateProductCategoryCommand command)
-        {
-            if (productId != command.ProductId)
-                return BadRequest("Bad Request Message");
-
-            return CreatedAtRoute(nameof(GetProductCategory), new { productId = productId }, new { ProductId = productId });
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="productId"></param>
-        /// <returns></returns>
-        [HttpGet("/api/v1/product/{productId:int}/category", Name = nameof(GetProductCategory))]
-        public async Task<IActionResult> GetProductCategory(int productId)
-        {
-            ProductCategoryVM productCategoryVM = ProductCategoryMockData.ProductCategoryVMMokcData;
-
-            return Ok(productCategoryVM);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="productId"></param>
-        /// <param name="command"></param>
-        /// <returns></returns>
-        [HttpPut("/api/v1/product/{productId:int}/category")]
-        public async Task<IActionResult> UpdateProductCategory(int productId, UpdateProductCategoryCommand command)
-        {
-            if (productId != command.ProductId)
-                return BadRequest("Bad Request Message");
-
-            return NoContent();
-        }
-
-        [HttpDelete("/api/v1/product/{productId:int}/category")]
-        public async Task<IActionResult> DeleteProductCategory(int productId)
         {
             return NoContent();
         }
@@ -197,62 +148,102 @@ namespace BestPracticesRESTAPI.Controllers.v1
         /// 
         /// </summary>
         /// <param name="productId"></param>
-        /// <param name="priceId"></param>
+        /// <returns></returns>
+        [HttpDelete("/api/v1/product/{productId:int}/price")]
+        public async Task<IActionResult> DeleteProductPrice(int productId)
+        {
+            return NoContent();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productId"></param>
         /// <param name="command"></param>
         /// <returns></returns>
-        [HttpPost("/api/v1/product/{productId:int}/price/{priceId:int}/off")]
-        public async Task<IActionResult> CreateProductOffPrice(int productId, int priceId, CreateProductPriceOffCommand command)
+        [HttpPost("/api/v1/product/{productId:int}/category")]
+        public async Task<IActionResult> CreateProductCategory(int productId, CreateProductCategoryCommand command)
         {
-            if (productId != command.ProductId ||
-                priceId != command.PriceId)
+            if (productId != command.ProductId)
                 return BadRequest("Bad Request Message");
 
-            return CreatedAtRoute(nameof(GetProductOffPrice),
-                new { ProductId = productId, PriceId = priceId });
+            return CreatedAtRoute(nameof(GetProductCategory), new { productId = productId }, new { ProductId = productId });
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="productId"></param>
-        /// <param name="priceId"></param>
         /// <returns></returns>
-        [HttpGet("/api/v1/product/{productId:int}/price/{priceId:int}/off", Name = nameof(GetProductOffPrice))]
-        public async Task<IActionResult> GetProductOffPrice(int productId, int priceId)
+        [HttpGet("/api/v1/product/{productId:int}/category", Name = nameof(GetProductCategory))]
+        public async Task<IActionResult> GetProductCategory(int productId)
         {
-            ProductPriceOffVM productPriceOffMockData = ProductPriceOffMockData.ProductPriceOffVM;
+            ProductCategoryVM productCategoryVM = ProductCategoryMockData.ProductCategoryVMMokcData;
 
-            return Ok(productPriceOffMockData);
+            return Ok(productCategoryVM);
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="productId"></param>
-        /// <param name="priceId"></param>
         /// <param name="command"></param>
         /// <returns></returns>
-        [HttpPut("/api/v1/product/{productId:int}/price/{priceId:int}/off")]
-        public async Task<IActionResult> UpdateProductOffPrice(int productId, int priceId, UpdateProductPriceOffCommand command)
+        [HttpPut("/api/v1/product/{productId:int}/category")]
+        public async Task<IActionResult> UpdateProductCategory(int productId, UpdateProductCategoryCommand command)
         {
-            if (productId != command.ProductId ||
-                priceId != command.PriceId)
+            if (productId != command.ProductId)
                 return BadRequest("Bad Request Message");
 
             return NoContent();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="productId"></param>
-        /// <param name="priceId"></param>
-        /// <returns></returns>
-        [HttpDelete("/api/v1/product/{productId:int}/price/{priceId:int}/off")]
-        public async Task<IActionResult> DeleteProductOffPrice(int productId, int priceId)
+        [HttpDelete("/api/v1/product/{productId:int}/category")]
+        public async Task<IActionResult> DeleteProductCategory(int productId)
         {
             return NoContent();
         }
+
+        [HttpPost("/api/v1/product/{productId:int}/category/{categoryId:int}/subcategory")]
+        public async Task<IActionResult> CreateProductSubCategory(int productId, int categoryId, CreateProductSubCategoryCommand command)
+        {
+            if (productId != command.ProductId ||
+                categoryId != command.CategoryId)
+                return BadRequest("Bad Request Message");
+
+            return CreatedAtRoute(nameof(GetProductSubCategory),
+                new { 
+                    ProductId = productId, 
+                    categoryId = command.CategoryId, 
+                    subCategoryId = command.SubCategoryId 
+                });
+        }
+
+        [HttpGet("/api/v1/product/{productId:int}/category/{categoryId:int}/subcategory/{subCategoryId:int}", Name = nameof(GetProductSubCategory))]
+        public async Task<IActionResult> GetProductSubCategory(int productId, int categoryId, int subCategoryId)
+        {
+            ProductSubCategoryVM productSubCategoryVM = ProductSubCategoryMockData.ProductSubCategoryVM;
+
+            return Ok(productSubCategoryVM);
+        }
+
+        [HttpPut("/api/v1/product/{productId:int}/category/{categoryId:int}/subcategory/{subCategoryId:int}")]
+        public async Task<IActionResult> UpdateProductSubCategory(int productId, int categoryId, int subCategoryId, UpdateProductSubCategoryCommand command)
+        {
+            if (productId != command.ProductId ||
+                categoryId != command.CategoryId ||
+                subCategoryId != command.SubCategoryId)
+                return BadRequest("Bad Request Message");
+
+            return NoContent();
+        }
+
+        [HttpDelete("/api/v1/product/{productId:int}/category/{categoryId:int}/subcategory/{subCategoryId:int}")]
+        public async Task<IActionResult> DeleteProductSubCategory(int productId)
+        {
+            return NoContent();
+        }
+
 
     }
 }
