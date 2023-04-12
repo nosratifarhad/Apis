@@ -15,11 +15,11 @@ namespace BestPracticesRESTAPI.Controllers.v1
     public class ProductController : ControllerBase
     {
         /// <summary>
-        /// GetProductList
+        /// Get Product List
         /// </summary>
         /// <returns></returns>
         [HttpGet("/api/v1/products")]
-        public async Task<IActionResult> GetProductList()
+        public async Task<IActionResult> GetProducts()
         {
             List<ProductVM> productVMs = ProductMockDate.ProductVMsMockDate;
 
@@ -27,7 +27,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         }
 
         /// <summary>
-        /// CreateProduct
+        /// Create Product
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
@@ -40,7 +40,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         }
 
         /// <summary>
-        /// GetProduct
+        /// Get Product
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
