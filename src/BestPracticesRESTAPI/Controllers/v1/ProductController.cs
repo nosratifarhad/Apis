@@ -5,9 +5,7 @@ using BestPracticesRESTAPI.MockDates.ProductPictureMockDatas;
 using BestPracticesRESTAPI.MockDates.ProductPriceMockDatas;
 using BestPracticesRESTAPI.MockDates.ProductSubCategoryMockDatas;
 using BestPracticesRESTAPI.ViewModels;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Xml.Linq;
 
 namespace BestPracticesRESTAPI.Controllers.v1
 {
@@ -31,7 +29,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
-        [HttpPost("/api/v1/product")]
+        [HttpPost("/api/v1/products")]
         public async Task<IActionResult> CreateProduct(CreateProductCommand command)
         {
             int productId = 1;//Product Id back from DataBase.
@@ -44,7 +42,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
-        [HttpGet("/api/v1/product/{productId:int}", Name = nameof(GetProduct))]
+        [HttpGet("/api/v1/products/{productId:int}", Name = nameof(GetProduct))]
         public async Task<IActionResult> GetProduct(int productId)
         {
             ProductContentVM product = ProductMockDate.ProductContentVMMockDate;
@@ -58,7 +56,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         /// <param name="productId"></param>
         /// <param name="command"></param>
         /// <returns></returns>
-        [HttpPut("/api/v1/product/{productId:int}")]
+        [HttpPut("/api/v1/products/{productId:int}")]
         public async Task<IActionResult> UpdateProduct(int productId, UpdateProductCommand command)
         {
             if (productId != command.ProductId)
@@ -72,7 +70,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
-        [HttpDelete("/api/v1/product/{productId:int}")]
+        [HttpDelete("/api/v1/products/{productId:int}")]
         public async Task<IActionResult> DeleteProduct(int productId)
         {
             return NoContent();
@@ -84,7 +82,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         /// <param name="productId"></param>
         /// <param name="command"></param>
         /// <returns></returns>
-        [HttpPut("/api/v1/product/{productId:int}/picture")]
+        [HttpPut("/api/v1/products/{productId:int}/picture")]
         public async Task<IActionResult> UpsertProductPicture(int productId, ProductPictureCommand command)
         {
             if (productId != command.ProductId)
@@ -98,7 +96,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
-        [HttpGet("/api/v1/product/{productId:int}/picture", Name = nameof(GetProductPicture))]
+        [HttpGet("/api/v1/products/{productId:int}/picture", Name = nameof(GetProductPicture))]
         public async Task<IActionResult> GetProductPicture(int productId)
         {
             List<ProductPictureVM> productPictureVMs = ProductPictureMockData.ProductPictureVMs;
@@ -112,7 +110,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         /// <param name="productId"></param>
         /// <param name="command"></param>
         /// <returns></returns>
-        [HttpPost("/api/v1/product/{productId:int}/price")]
+        [HttpPost("/api/v1/products/{productId:int}/price")]
         public async Task<IActionResult> CreateProductPrice(int productId, CreateProductPriceCommand command)
         {
             if (productId != command.ProductId)
@@ -126,7 +124,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
-        [HttpGet("/api/v1/product/{productId:int}/price", Name = nameof(GetProductPrice))]
+        [HttpGet("/api/v1/products/{productId:int}/price", Name = nameof(GetProductPrice))]
         public async Task<IActionResult> GetProductPrice(int productId)
         {
             ProductPriceVM productPriceVM = ProductPriceMockData.productPriceVMMockData;
@@ -140,7 +138,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         /// <param name="productId"></param>
         /// <param name="command"></param>
         /// <returns></returns>
-        [HttpPut("/api/v1/product/{productId:int}/price")]
+        [HttpPut("/api/v1/products/{productId:int}/price")]
         public async Task<IActionResult> UpdateProductPrice(int productId, UpdateProductPriceCommand command)
         {
             if (productId != command.ProductId)
@@ -154,7 +152,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
-        [HttpDelete("/api/v1/product/{productId:int}/price")]
+        [HttpDelete("/api/v1/products/{productId:int}/price")]
         public async Task<IActionResult> DeleteProductPrice(int productId)
         {
             return NoContent();
@@ -166,7 +164,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         /// <param name="productId"></param>
         /// <param name="command"></param>
         /// <returns></returns>
-        [HttpPost("/api/v1/product/{productId:int}/category")]
+        [HttpPost("/api/v1/products/{productId:int}/category")]
         public async Task<IActionResult> CreateProductCategory(int productId, CreateProductCategoryCommand command)
         {
             if (productId != command.ProductId)
@@ -180,7 +178,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
-        [HttpGet("/api/v1/product/{productId:int}/category", Name = nameof(GetProductCategory))]
+        [HttpGet("/api/v1/products/{productId:int}/category", Name = nameof(GetProductCategory))]
         public async Task<IActionResult> GetProductCategory(int productId)
         {
             ProductCategoryVM productCategoryVM = ProductCategoryMockData.ProductCategoryVMMokcData;
@@ -194,7 +192,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         /// <param name="productId"></param>
         /// <param name="command"></param>
         /// <returns></returns>
-        [HttpPut("/api/v1/product/{productId:int}/category")]
+        [HttpPut("/api/v1/products/{productId:int}/category")]
         public async Task<IActionResult> UpdateProductCategory(int productId, UpdateProductCategoryCommand command)
         {
             if (productId != command.ProductId)
@@ -208,7 +206,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
-        [HttpDelete("/api/v1/product/{productId:int}/category")]
+        [HttpDelete("/api/v1/products/{productId:int}/category")]
         public async Task<IActionResult> DeleteProductCategory(int productId)
         {
             return NoContent();
@@ -221,7 +219,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         /// <param name="categoryId"></param>
         /// <param name="command"></param>
         /// <returns></returns>
-        [HttpPost("/api/v1/product/{productId:int}/category/{categoryId:int}/subcategory")]
+        [HttpPost("/api/v1/products/{productId:int}/category/{categoryId:int}/subcategory")]
         public async Task<IActionResult> CreateProductSubCategory(int productId, int categoryId, CreateProductSubCategoryCommand command)
         {
             if (productId != command.ProductId ||
@@ -243,7 +241,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         /// <param name="categoryId"></param>
         /// <param name="subCategoryId"></param>
         /// <returns></returns>
-        [HttpGet("/api/v1/product/{productId:int}/category/{categoryId:int}/subcategory/{subCategoryId:int}", Name = nameof(GetProductSubCategory))]
+        [HttpGet("/api/v1/products/{productId:int}/category/{categoryId:int}/subcategory/{subCategoryId:int}", Name = nameof(GetProductSubCategory))]
         public async Task<IActionResult> GetProductSubCategory(int productId, int categoryId, int subCategoryId)
         {
             ProductSubCategoryVM productSubCategoryVM = ProductSubCategoryMockData.ProductSubCategoryVM;
@@ -259,7 +257,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         /// <param name="subCategoryId"></param>
         /// <param name="command"></param>
         /// <returns></returns>
-        [HttpPut("/api/v1/product/{productId:int}/category/{categoryId:int}/subcategory/{subCategoryId:int}")]
+        [HttpPut("/api/v1/products/{productId:int}/category/{categoryId:int}/subcategory/{subCategoryId:int}")]
         public async Task<IActionResult> UpdateProductSubCategory(int productId, int categoryId, int subCategoryId, UpdateProductSubCategoryCommand command)
         {
             if (productId != command.ProductId ||
@@ -275,7 +273,7 @@ namespace BestPracticesRESTAPI.Controllers.v1
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
-        [HttpDelete("/api/v1/product/{productId:int}/category/{categoryId:int}/subcategory/{subCategoryId:int}")]
+        [HttpDelete("/api/v1/products/{productId:int}/category/{categoryId:int}/subcategory/{subCategoryId:int}")]
         public async Task<IActionResult> DeleteProductSubCategory(int productId)
         {
             return NoContent();
